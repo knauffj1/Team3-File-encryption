@@ -1,0 +1,114 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.encryptfile.MainActivity" >
+
+    <ListView
+        android:id="@+id/listViewFile"
+        android:layout_width="match_parent"
+        android:layout_height="620px"
+        android:layout_marginTop="100px" >
+    </ListView>
+
+    <Button
+        android:id="@+id/btnPaste"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnCut"
+        android:layout_alignBottom="@+id/btnCut"
+        android:layout_marginLeft="23dp"
+        android:layout_toRightOf="@+id/btnDelete"
+        android:text="Paste" 
+        android:onClick="btnPasteClick"/>
+
+    <Button
+        android:id="@+id/btnCopy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnDelete"
+        android:layout_alignBottom="@+id/btnDelete"
+        android:layout_alignLeft="@+id/listView1"
+        android:text="Copy" 
+        android:onClick="btnCopyClick"/>
+
+    <Button
+        android:id="@+id/btnCut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnEncrypt"
+        android:layout_alignRight="@+id/listViewFile"
+        android:text="Cut" 
+        android:onClick="btnCutClick"/>
+
+    <Button
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnUp"
+        android:layout_alignRight="@+id/listViewFile"
+        android:onClick="btnSearchClick"
+        android:text="Search" />
+
+    <Button
+        android:id="@+id/btnUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="5dp"
+        android:layout_toLeftOf="@+id/btnDelete"
+        android:onClick="btnUpClick"
+        android:text="Up" />
+
+	<Button
+	    android:id="@+id/btnNewFile"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/btnDecrypt"
+	    android:layout_alignBottom="@+id/btnDecrypt"
+	    android:layout_alignLeft="@+id/btnCopy"
+	    android:onClick="btnNewFileClick"
+	    android:text="New File" />
+
+	<Button
+	    android:id="@+id/btnDecrypt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignParentBottom="true"
+	    android:layout_centerHorizontal="true"
+	    android:layout_marginBottom="21dp"
+	    android:onClick="btnDecryptClick"
+	    android:text="Decrypt" />
+
+	<Button
+	    android:id="@+id/btnDelete"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_above="@+id/btnNewFile"
+	    android:layout_toRightOf="@+id/btnNewFile"
+	    android:onClick="btnDeleteClick"
+	    android:text="Delete" />
+
+	<Button
+	    android:id="@+id/btnEncrypt"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBaseline="@+id/btnDecrypt"
+	    android:layout_alignBottom="@+id/btnDecrypt"
+	    android:layout_toRightOf="@+id/btnPaste"
+	    android:onClick="btnEncryptClick"
+	    android:text="Encrypt" />
+
+	<EditText
+	    android:id="@+id/edtFileName"
+	    android:layout_width="300px"
+	    android:layout_height="wrap_content"
+	    android:layout_alignBottom="@+id/btnUp"
+	    android:layout_centerHorizontal="true"
+	    android:ems="10" />
+
+</RelativeLayout>

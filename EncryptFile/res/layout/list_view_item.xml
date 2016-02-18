@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70px"
+    android:orientation="horizontal" >
+
+    <CheckBox
+        android:id="@+id/chkFile"
+        android:layout_width="wrap_content"
+        android:layout_height="70px" />
+
+    <TextView
+        android:id="@+id/tvFileName"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/imgIcon"
+        android:layout_toRightOf="@+id/chkFile"
+        android:layout_weight="0.52"
+        android:textAlignment="center" />
+
+    <ImageView
+        android:id="@+id/imgIcon"
+        android:layout_width="60px"
+        android:layout_height="60px"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/imgKey"
+        android:layout_width="40px"
+        android:layout_height="40px"
+        android:layout_alignRight="@+id/imgIcon"
+        android:layout_centerVertical="true" />
+
+</RelativeLayout>
