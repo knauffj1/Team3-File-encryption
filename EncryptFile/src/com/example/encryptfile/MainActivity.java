@@ -30,6 +30,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	private Context mContext;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
 	private ObjectMapper jsonMapper = new ObjectMapper();
 	private List<FileItem> lstCopy = new ArrayList<FileItem>();
 	private List<FileItem> lstCut = new ArrayList<FileItem>();
+	private List<FileItem> lstStore = new ArrayList<FileItem>();
 	private boolean copy = false;
 	private boolean cut = false;
 
@@ -86,6 +88,7 @@ public class MainActivity extends Activity {
 		File rootDir = Environment.getExternalStorageDirectory();
 		currentDir = rootDir.getAbsolutePath();
 		setListFiles();
+
 	}
 
 	public static MainActivity getInstance() {
@@ -202,6 +205,27 @@ public class MainActivity extends Activity {
 		}
 		copy = true;
 		cut = false;
+	}
+
+	//Button copy click event
+	public void btnStoreClick(View v) throws IOException {
+
+		// set lst Store to null
+		lstStore = new ArrayList<FileItem>();
+
+		//Check all files are display, if file is checked add this to Array
+		for (FileItem file : mAdapter.getLstFiles()) {
+			if (file.isChoose()) {
+				lstStore.add(file);
+
+				// Execute new StoreTask
+				new StoreTask().execute(file.toString());
+
+				Toast.makeText(this, file.toString() + " has been uploaded successfully!", Toast.LENGTH_LONG).show();
+				System.out.println(file.getAbsolutePath());
+			}
+		}
+
 	}
 
 	//Button paste click event

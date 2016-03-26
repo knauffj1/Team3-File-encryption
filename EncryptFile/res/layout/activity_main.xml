@@ -11,8 +11,9 @@
     <ListView
         android:id="@+id/listViewFile"
         android:layout_width="match_parent"
-        android:layout_height="620px"
-        android:layout_marginTop="100px" >
+        android:layout_height="1000px"
+        android:layout_below="@+id/btnSearch"
+        android:layout_alignParentStart="true">
     </ListView>
 
     <Button
@@ -30,11 +31,10 @@
         android:id="@+id/btnCopy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnDelete"
-        android:layout_alignBottom="@+id/btnDelete"
-        android:layout_alignLeft="@+id/listView1"
-        android:text="Copy" 
-        android:onClick="btnCopyClick"/>
+        android:text="Copy"
+        android:onClick="btnCopyClick"
+        android:layout_above="@+id/btnNewFile"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/btnCut"
@@ -68,21 +68,19 @@
 	    android:id="@+id/btnNewFile"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_alignBaseline="@+id/btnDecrypt"
-	    android:layout_alignBottom="@+id/btnDecrypt"
-	    android:layout_alignLeft="@+id/btnCopy"
-	    android:onClick="btnNewFileClick"
-	    android:text="New File" />
+        android:onClick="btnNewFileClick"
+	    android:text="New File"
+        android:layout_alignTop="@+id/btnDecrypt"
+        android:layout_alignStart="@+id/listViewFile" />
 
 	<Button
 	    android:id="@+id/btnDecrypt"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_alignParentBottom="true"
-	    android:layout_centerHorizontal="true"
-	    android:layout_marginBottom="21dp"
-	    android:onClick="btnDecryptClick"
-	    android:text="Decrypt" />
+        android:onClick="btnDecryptClick"
+	    android:text="Decrypt"
+        android:layout_below="@+id/btnPaste"
+        android:layout_toEndOf="@+id/btnNewFile" />
 
 	<Button
 	    android:id="@+id/btnDelete"
@@ -97,11 +95,10 @@
 	    android:id="@+id/btnEncrypt"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_alignBaseline="@+id/btnDecrypt"
-	    android:layout_alignBottom="@+id/btnDecrypt"
-	    android:layout_toRightOf="@+id/btnPaste"
-	    android:onClick="btnEncryptClick"
-	    android:text="Encrypt" />
+        android:onClick="btnEncryptClick"
+	    android:text="Encrypt"
+        android:layout_alignTop="@+id/btnStore"
+        android:layout_toEndOf="@+id/btnDecrypt" />
 
 	<EditText
 	    android:id="@+id/edtFileName"
@@ -110,5 +107,14 @@
 	    android:layout_alignBottom="@+id/btnUp"
 	    android:layout_centerHorizontal="true"
 	    android:ems="10" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Store"
+        android:id="@+id/btnStore"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="btnStoreClick"/>
 
 </RelativeLayout>
