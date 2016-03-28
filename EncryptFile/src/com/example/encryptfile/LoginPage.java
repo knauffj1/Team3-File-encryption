@@ -68,6 +68,8 @@ public class LoginPage extends Activity {
 			e.printStackTrace();
 		}
 		//Check pass user input
+		System.out.println(password);
+		System.out.println(input);
 		if (password.equals(input)) {
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
