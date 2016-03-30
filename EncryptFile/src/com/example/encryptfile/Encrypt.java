@@ -25,9 +25,19 @@ public class Encrypt {
 		SecretKey skey = kgen.generateKey();
 		return skey.getEncoded();
 	}
+public static byte[] generateFileKey() throws Exception {
 
+		KeyGenerator kgen = KeyGenerator.getInstance("AES");
+		SecureRandom sr = new SecureRandom();
+		
+		//Init key with length 128 bit
+		kgen.init(128, sr);
+		SecretKey skey = kgen.generateKey();
+		return skey.getEncoded();
+	}
+	
 	//Encrypt file by key byte[]
-	public static byte[] encodeFile(byte[] key, byte[] fileData)
+public static byte[] encodeFile(byte[] key, byte[] fileData)
 			throws Exception {
 
 		//Init secret key

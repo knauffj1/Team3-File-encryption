@@ -24,6 +24,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -278,11 +279,20 @@ public class MainActivity extends Activity {
 				//if file is not encrypt
 				if (!file.isEncrypted()) {
 					try {
+						
 						//Read file to byte[]
 						byte[] fileData = Encrypt.read(file);
 						
 						//Encrypt password 128 bit
-						byte[] key = Encrypt.generateKey("password");
+						byte[] key = Encrypt.generateFileKey();
+						
+						//saving the key for use later (will be changed to be more secure)
+						SharedPreferences sharedPref = getSharedPreferences("security",
+								Context.MODE_PRIVATE);
+						SharedPreferences.Editor editor = sharedPref.edit();
+						String keyString = Base64.encodeToString(key, Base64.DEFAULT);
+						editor.putString("key-" + file.toString(), keyString);
+						editor.commit();
 						
 						//Encrypt byte[] file
 						byte[] encryptedData = Encrypt
@@ -487,12 +497,22 @@ public class MainActivity extends Activity {
 			if (file.isChoose()) {
 				if (file.isEncrypted()) {
 					try {
-						
+						System.out.println("File: " + file.toString());
 						//Get file byte[]
 						byte[] fileData = Encrypt.read(file);
 						
+						//retrieving key from shared prefs
+						SharedPreferences sharedPref = getSharedPreferences("security",
+								Context.MODE_PRIVATE);
+						String keyString = sharedPref.getString("key-" + file.toString(), null);
+						byte [] key = Base64.decode(keyString, Base64.DEFAULT);
+						
 						//Generate key and decrypt file byte[]
-						byte[] key = Encrypt.generateKey("password");
+						//byte[] key = Encrypt.generateKey("password");
+
+						String password = sharedPref.getString("password", null);
+						System.out.println(password);
+						System.out.println(key);
 						byte[] encryptedData = Encrypt
 								.decodeFile(key, fileData);
 						
