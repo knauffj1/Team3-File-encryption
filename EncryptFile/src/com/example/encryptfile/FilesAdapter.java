@@ -58,7 +58,7 @@ public class FilesAdapter extends BaseAdapter {
 		//if(convertView==null){
 			final CheckBox chkFile = (CheckBox) vi.findViewById(R.id.chkFile);
 			TextView tvFileName = (TextView) vi.findViewById(R.id.tvFileName);
-			System.out.println("pos: "+position);
+			//System.out.println("pos: "+position);
 			tvFileName.setText(lstFiles.get(position).getName());
 			ImageView imgView = (ImageView) vi.findViewById(R.id.imgIcon);
 			if(lstFiles.get(position).isDirectory()){

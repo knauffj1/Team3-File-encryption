@@ -59,17 +59,4 @@ public class StoreTask extends AsyncTask<String, Void, String>{
         return null;
     }
 
-    @Override
-    protected void onPostExecute(String result) {
-        super.onPostExecute(result);
-        try {
-            if (ftpClient.isConnected()) {
-                ftpClient.logout();
-                ftpClient.disconnect();
-            }
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-    }
-
 }

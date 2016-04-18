@@ -1,9 +1,7 @@
 package com.example.encryptfile;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -24,6 +22,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -418,6 +417,7 @@ public class MainActivity extends Activity {
 		//Show alert with edittext for user type password
 		AlertDialog.Builder alert = new Builder(this);
 		final EditText edtPassword = new EditText(MainActivity.this);
+		edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
 				LinearLayout.LayoutParams.MATCH_PARENT,
 				LinearLayout.LayoutParams.MATCH_PARENT);
@@ -595,5 +595,12 @@ public class MainActivity extends Activity {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public void btnDownloadClick(View view) {
+		Intent downloadIntent = new Intent(MainActivity.this,
+				DownloadActivity.class);
+
+		MainActivity.this.startActivity(downloadIntent);
 	}
 }
