@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class ChangePassword extends Activity {
 	private String oldPass;
@@ -21,7 +22,7 @@ public class ChangePassword extends Activity {
 	private EditText edtOldPass;
 	private EditText edtNewPass;
 	private EditText edtConfirmNewPass;
-	private EditText edtSecurityQuestion;
+	private TextView securityQuestionView;
 	private EditText edtSecurityAnswer;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +39,21 @@ public class ChangePassword extends Activity {
 		edtConfirmNewPass = (EditText) findViewById(R.id.edtConfirmNewPass);
 		
 		//Get EditText security question
-		edtSecurityQuestion = (EditText) findViewById(R.id.edtSecurityQuestionChange);
+		securityQuestionView = (TextView) findViewById(R.id.securityQuestionView);
 		
 		//Get EditText security answer
 		edtSecurityAnswer = (EditText) findViewById(R.id.edtSecurityAnswerChange);
+		
+		//Get sharedprefences
+		SharedPreferences sharedPref = getSharedPreferences("security",
+				Context.MODE_PRIVATE);
+		
+		String trueQuestion =  sharedPref.getString("question", null);
+		
+		securityQuestionView.setText(trueQuestion);
+		
+		
+		
 		
 	}
 
@@ -68,23 +80,21 @@ public class ChangePassword extends Activity {
 		SharedPreferences sharedPref = getSharedPreferences("security",
 				Context.MODE_PRIVATE);
 		
-		//Get password, security question, security answer user setup firtrun
+		//Get password, security question, security answer user setup firstrun
 		String truePass = sharedPref.getString("password", null);
-		String trueQuestion =  sharedPref.getString("question", null);
 		String trueAnswer =  sharedPref.getString("answer", null);
 		
 		//Get string user input
 		String oldPass = edtOldPass.getText().toString();
 		String newPass = edtNewPass.getText().toString();
 		String confirmNewPass = edtConfirmNewPass.getText().toString();
-		String question = edtSecurityQuestion.getText().toString();
 		String answer = edtSecurityAnswer.getText().toString();
 		
 		if(newPass.equals("")||confirmNewPass.equals("")){
 			showMessage("Error!", "You must type new password and confirm!");
 			return;
 		}
-		if(oldPass.equals("")&&(question.equals("")||answer.equals(""))){
+		if(oldPass.equals("")&&answer.equals("")){
 			showMessage("Error!", "You must type old pass or question and answer!");
 			return;
 		}
@@ -104,7 +114,7 @@ public class ChangePassword extends Activity {
 		}
 		
 		//check password or question and answer user type
-		if (truePass.equals(input)||(trueQuestion.equalsIgnoreCase(question)&&trueAnswer.equalsIgnoreCase(answer))) {
+		if (truePass.equals(input)||trueAnswer.equalsIgnoreCase(answer)) {
 			SharedPreferences.Editor editor = sharedPref.edit();
 			byte[] pass;
 			try {

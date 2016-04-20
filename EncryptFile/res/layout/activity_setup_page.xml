@@ -18,14 +18,17 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="120px"
+                android:layout_height="wrap_content"
                 android:text="Password:" >
             </TextView>
 
             <EditText
                 android:id="@+id/edtPassword"
-                android:layout_width="400px"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="textPassword" />
+
         </TableRow>
 
         <TableRow
@@ -34,14 +37,16 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="120px"
+                android:layout_height="wrap_content"
                 android:text="Security question:" >
             </TextView>
 
             <EditText
                 android:id="@+id/edtSecurityQuestions"
-                android:layout_width="400px"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
         </TableRow>
 
         <TableRow
@@ -50,14 +55,16 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="120px"
+                android:layout_height="wrap_content"
                 android:text="Security answers:" >
             </TextView>
 
             <EditText
-                android:layout_width="400px"
                 android:id="@+id/edtSecurityAnswer"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
         </TableRow>
     </TableLayout>
 
@@ -66,7 +73,7 @@
 	    android:layout_height="wrap_content"
 	    android:layout_alignParentBottom="true"
 	    android:layout_centerHorizontal="true"
-	    android:layout_marginBottom="149dp"
+
 	    android:text="Submit" 
 	    android:onClick="btnSubmitClick"/>
 

@@ -109,8 +109,98 @@ public class MainActivity extends Activity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
+		if (id == R.id.cut) {
+			//Set lstCut to null
+			lstCut = new ArrayList<FileItem>();
+			
+			//Check all files if file is checked
+			for (FileItem file : mAdapter.getLstFiles()) {
+				if (file.isChoose()) {
+					lstCut.add(file);
+				}
+			}
+			cut = true;
+			copy = false;
+		}
+		if (id == R.id.copy) {
+			
+			// set lst Copy to null
+			lstCopy = new ArrayList<FileItem>();
+			
+			//Check all files are display, if file is checked add this to 
+			for (FileItem file : mAdapter.getLstFiles()) {
+				if (file.isChoose()) {
+					lstCopy.add(file);
+				}
+			}
+			copy = true;
+			cut = false;
+		}
+		if (id == R.id.paste) {
+			//if cut
+			if (cut) {
+				//show login with option 2
+				showLogin(2);
+			}
+			//if cupy
+			if (copy) {
+				//Call copyFile function
+				copyFile();
+			}
+		}
+		if (id == R.id.delete) {
+			//Show login with option 1
+			showLogin(1);
+		}
+		if (id == R.id.new_file) {
+			//Show alert with editext to type file name
+			AlertDialog.Builder alert = new Builder(this);
+			final EditText input = new EditText(MainActivity.this);
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+					LinearLayout.LayoutParams.MATCH_PARENT,
+					LinearLayout.LayoutParams.MATCH_PARENT);
+			input.setLayoutParams(lp);
+			alert.setView(input);
+			//Button cancel of alert
+			alert.setNegativeButton("Cancel", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+			//Button OK of alert
+			alert.setPositiveButton("OK", new OnClickListener() {
+
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					// TODO Auto-generated method stub
+					
+					//Create new file or replace if file exist
+					String newFilePath = currentDir + "/"
+							+ input.getText().toString();
+					File newFile = new File(newFilePath);
+					try {
+						
+						//Write string 'test' to new file
+						FileOutputStream output = new FileOutputStream(newFile);
+						output.write("test".getBytes());
+						output.flush();
+						output.close();
+
+						//Refresh list file displaying
+						setListFiles();
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+			alert.setTitle("File name:");
+			alert.setMessage("Type File Name:");
+			
+			//Show alert
+			alert.show();
 		}
 		return super.onOptionsItemSelected(item);
 	}
@@ -302,6 +392,7 @@ public class MainActivity extends Activity {
 						FileOutputStream output = new FileOutputStream(file);
 						output.write(encryptedData);
 						output.flush();
+						output.close();
 						
 						//Add file path to lstFileEncrypted
 						lstFileEcrypted.add(file.getPath());
@@ -520,6 +611,7 @@ public class MainActivity extends Activity {
 						FileOutputStream output = new FileOutputStream(file);
 						output.write(encryptedData);
 						output.flush();
+						output.close();
 						
 						//Remove file path from saved list file encrypted
 						lstFileEcrypted.remove(file.getPath());
@@ -564,6 +656,7 @@ public class MainActivity extends Activity {
 				FileOutputStream output = new FileOutputStream(newFile);
 				byte[] data = Encrypt.read(file);
 				output.write(data);
+				output.close();
 				
 				//Delete file
 				file.delete();
@@ -589,6 +682,7 @@ public class MainActivity extends Activity {
 				FileOutputStream output = new FileOutputStream(newFile);
 				byte[] data = Encrypt.read(file);
 				output.write(data);
+				output.close();
 				//Refresh list file displaying
 				setListFiles();
 			} catch (Exception e) {

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="commons-net-3.4-sources">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/EncryptFile/libs/commons-net-3.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

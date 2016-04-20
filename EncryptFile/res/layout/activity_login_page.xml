@@ -8,36 +8,12 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.encryptfile.LoginPage" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="17dp"
-        android:layout_marginTop="125dp"
-        android:text="Password:" />
-
-    <EditText
-        android:id="@+id/edtPasswordLogin"
-        android:layout_width="250px"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView1"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignParentRight="true"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
     <Button
         android:id="@+id/btnChangePass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="49dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
         android:onClick="btnChangePassClick"
         android:text="Change password" />
 
@@ -45,11 +21,29 @@
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnChangePass"
-        android:layout_alignBottom="@+id/btnChangePass"
-        android:layout_alignRight="@+id/edtPasswordLogin"
-        android:layout_marginRight="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:onClick="btnLoginClick"
         android:text="Login" />
+
+    <EditText
+        android:id="@+id/edtPasswordLogin"
+        android:layout_width="250px"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textPassword" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edtPasswordLogin"
+        android:layout_alignParentLeft="true"
+        android:text="Password:" />
 
 </RelativeLayout>
