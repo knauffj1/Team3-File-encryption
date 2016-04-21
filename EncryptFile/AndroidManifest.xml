@@ -44,6 +44,10 @@
             android:name=".ChangePassword"
             android:label="@string/title_activity_change_password" >
         </activity>
+        <activity
+            android:name=".DownloadActivity"
+            android:label="@string/title_activity_download_page" >
+        </activity>
     </application>
 
 </manifest>

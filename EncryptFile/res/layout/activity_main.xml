@@ -21,20 +21,19 @@
         android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnUp"
-        android:layout_alignRight="@+id/listViewFile"
         android:onClick="btnSearchClick"
-        android:text="Search" />
+        android:text="Search"
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/btnPaste" />
 
     <Button
         android:id="@+id/btnUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_toLeftOf="@+id/btnDelete"
         android:onClick="btnUpClick"
-        android:text="Up" />
+        android:text="Up"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/edtFileName"
@@ -76,5 +75,15 @@
             android:onClick="btnStoreClick"
             android:text="Store" />
     </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Download"
+        android:onClick="btnDownloadClick"
+        android:id="@+id/btnDownload"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/btnSearch"
+        android:textSize="15dp" />
 
 </RelativeLayout>
