@@ -17,24 +17,6 @@
         android:layout_above="@+id/buttonView" >
     </ListView>
 
-    <Button
-        android:id="@+id/btnSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnSearchClick"
-        android:text="Search"
-        android:layout_alignParentTop="true"
-        android:layout_alignEnd="@+id/btnPaste" />
-
-    <Button
-        android:id="@+id/btnUp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="btnUpClick"
-        android:text="Up"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
-
     <EditText
         android:id="@+id/edtFileName"
         android:layout_width="wrap_content"
@@ -56,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="btnDecryptClick"
-            android:text="Decrypt" />
+            android:text="Decrypt"
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/btnEncrypt"
@@ -64,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="btnEncryptClick"
-            android:text="Encrypt" />
+            android:text="Encrypt"
+            android:textSize="14dp" />
 
         <Button
             android:id="@+id/btnStore"
@@ -73,17 +57,41 @@
             android:layout_alignParentEnd="true"
             android:layout_weight="1"
             android:onClick="btnStoreClick"
-            android:text="Store" />
+            android:text="Store"
+            android:textSize="14dp" />
+
+        <Button
+            android:id="@+id/btnDownload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/btnSearch"
+            android:layout_weight="1"
+            android:onClick="btnDownloadClick"
+            android:text="Download"
+            android:textSize="14dp" />
+
     </LinearLayout>
 
-    <Button
+    <ImageButton
+        android:id="@+id/btnSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Download"
-        android:onClick="btnDownloadClick"
-        android:id="@+id/btnDownload"
+        android:layout_alignEnd="@+id/btnPaste"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/btnSearch"
-        android:textSize="15dp" />
+        android:onClick="btnSearchClick"
+        android:src="@drawable/ic_search_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/btnUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:drawableTop="@drawable/ic_subdirectory_arrow_left_black_24dp"
+        android:onClick="btnUpClick"
+        android:src="@drawable/ic_subdirectory_arrow_left_black_24dp"
+        android:rotation="90" />
 
 </RelativeLayout>
